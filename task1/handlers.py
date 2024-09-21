@@ -19,7 +19,7 @@ async def get_factorial(send: Callable[[dict[str, Any]], Awaitable[None]],
 
     try:
         res = factorial(n)
-        await send_json(send, 200, {"result": str(res)})
+        await send_json(send, 200, {"result": res})
     except ValueError as e:    
         await send_json(send, 400, {"error": repr(e)})
 
@@ -38,7 +38,7 @@ async def get_fibonacci(send: Callable[[dict[str, Any]], Awaitable[None]],
 
     try:
         res = fibonacci(n)
-        await send_json(send, 200, {"result": str(res)})
+        await send_json(send, 200, {"result": res})
     except ValueError as e:    
         await send_json(send, 400, {"error": repr(e)})
 
@@ -60,6 +60,6 @@ async def get_mean(send: Callable[[dict[str, Any]], Awaitable[None]],
     try:
         assert len(data) != 0, "List `data` is empty."
         res = mean(data)
-        await send_json(send, 200, {"result": str(res)})
+        await send_json(send, 200, {"result": res})
     except (ValueError, AssertionError) as e:    
         await send_json(send, 400, {"error": repr(e)})
